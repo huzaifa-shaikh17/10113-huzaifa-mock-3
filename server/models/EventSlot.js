@@ -1,0 +1,48 @@
+import mongoose from "mongoose";
+
+const eventSlotSchema = new mongoose.Schema(
+  {
+    eventName: {
+      type: String,
+      required: true,
+    },
+
+    date: {
+      type: Date,
+      required: true,
+    },
+
+    startTime: {
+      type: String,
+      required: true,
+    },
+
+    endTime: {
+      type: String,
+      required: true,
+    },
+
+    location: {
+      type: String,
+      required: true,
+    },
+
+    capacity: {
+      type: Number,
+      required: true,
+      min: 1,
+    },
+
+    status: {
+      type: String,
+      enum: ["Open", "Closed"],
+      default: "Open",
+    },
+  },
+  {
+    timestamps: true,
+  },
+);
+
+const EventSlot = mongoose.model("user", eventSlotSchema);
+export default EventSlot;
